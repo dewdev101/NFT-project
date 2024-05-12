@@ -1,27 +1,29 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.25;
+// import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract Token {
-    string tokenName = "Moon token";
-    string symbol = "DMT";
-    uint totalSupply = 100000;
-    address public owner;
-    mapping(address=>uint256) balances ;
+// contract CatToken is ERC20 {
+//   address public owner ;
+//   event ConstructorSet (address _owner, uint256 _token);
 
-    constructor () {
-        balances[msg.sender] = totalSupply;
-        owner = msg.sender;
+//    constructor (uint256 initSupply) ERC20("CatToken","CTT") {
+//     owner = msg.sender ;
+//     _mint(owner,initSupply);
+//     emit ConstructorSet(owner,initSupply);
+//    }
+
+//    function getBalance(address _account)  view public returns (uint256) {
+//     return CatToken.getBalance(_account);
+//    }
+// }
+contract HelloWorld {
+    string public message;
+
+    function  setMessage(string memory _message) public {
+        message = _message;
     }
 
-    function transfer(address to, uint256 amount) external {
-        require(balances[msg.sender] >= amount,"not enough token");
-        balances[msg.sender]-=amount;
-        balances[to]+=amount;
-    }
-
-    function balancOf(address account) external view returns (uint256) {
-        return balances[account];
-    }
+    // function getMessage() view public returns (calldata string) {
+    //     return message;
+    // }
 }
-//TODO: Deploy this contract and test
-//then study rmrk smart contract fot slot part
